@@ -1,0 +1,7 @@
+{
+  "name": "daidaiwo-cal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

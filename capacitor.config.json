@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "daidaiwo-cal",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
