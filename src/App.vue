@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
+import { useRouter } from 'vue-router'
 import { defineComponent } from 'vue';
 
 export default defineComponent({
@@ -13,6 +14,10 @@ export default defineComponent({
   components: {
     IonApp,
     IonRouterOutlet
+  },
+  setup() {
+    const router = useRouter()
+    return { router }
   }
 });
 </script>
