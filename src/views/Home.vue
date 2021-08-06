@@ -16,6 +16,7 @@
       <div id="container">
         <strong>Ready to create an app?</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <Toast />
       </div>
     </ion-content>
   </ion-page>
@@ -24,6 +25,7 @@
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
+import Toast from './../components/toast.vue'
 
 export default defineComponent({
   name: 'Home',
@@ -32,7 +34,8 @@ export default defineComponent({
     IonHeader,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    Toast
   }
 });
 </script>
