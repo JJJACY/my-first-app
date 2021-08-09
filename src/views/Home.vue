@@ -1,24 +1,18 @@
 <template>
   <ion-page>
     <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Blank</ion-title>
+      <ion-toolbar class="toolbar" color="success"> 
+        <ion-title class="toolbar-title">首页</ion-title>
       </ion-toolbar>
     </ion-header>
-    
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
+    <ion-content :fullscreen="true">    
       <div id="container">
         <strong>Ready to create an app?</strong>
         <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
         <Toast />
       </div>
     </ion-content>
+    <TabBar />
   </ion-page>
 </template>
 
@@ -26,6 +20,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
 import Toast from './../components/toast.vue'
+import TabBar from './../components/TabBar.vue'
 
 export default defineComponent({
   name: 'Home',
@@ -35,37 +30,18 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    Toast
+    Toast,
+    TabBar
   }
 });
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.toolbar {
+  --border-color: #ffffff;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.toolbar-title {
+  color: #ffffff;
 }
 </style>
