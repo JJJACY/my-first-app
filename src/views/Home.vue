@@ -2,13 +2,30 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar class="toolbar" color="success"> 
-        <ion-title class="toolbar-title">首页</ion-title>
+        <ion-title class="toolbar-title">Home</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">    
       <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <p><strong>Ready to create an app?</strong></p>
+        <ion-button 
+          v-for="item in BtnData.btnInfo" 
+          :key="item.id" 
+          size="small"
+          @click="handleClickButton(item.id)">
+          {{item.name}}
+        </ion-button>
+        <ion-button @click="setOpen(true)">Show Alert</ion-button>
+        <ion-alert
+          :is-open="isOpenRef"
+          header="Alert"
+          sub-header="Subtitle"
+          message="This is an alert message."
+          css-class="my-custom-class"
+          :buttons="buttons"
+          @didDismiss="setOpen(false)"
+        >
+        </ion-alert>
         <Toast />
       </div>
     </ion-content>
@@ -17,8 +34,8 @@
 </template>
 
 <script lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
-import { defineComponent } from 'vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonAlert, alertController } from '@ionic/vue';
+import { defineComponent, reactive, ref } from 'vue';
 import Toast from './../components/toast.vue'
 import TabBar from './../components/TabBar.vue'
 
@@ -30,8 +47,54 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
+    IonButton,
+    IonAlert,
     Toast,
-    TabBar
+    TabBar,
+  },
+  setup() {
+    const ShowMessage = async (msg: string) => {
+      const alert = await alertController
+        .create({
+          cssClass: 'my-custom-class',
+          header: '提示',
+          subHeader: `${msg}`,
+          buttons: ['確認'],
+        });
+      await alert.present();
+      const { role } = await alert.onDidDismiss();
+      console.log('onDidDismiss resolved with role', role);
+    }
+
+    const BtnData = reactive({
+      btnInfo: [
+        {
+          id:1,
+          name: '是'
+        },
+        {
+          id: 2,
+          name: '否'
+        }
+      ]
+    })
+
+    const handleClickButton = (val: number) => {
+      val === 1? ShowMessage('你选择了---是') : ShowMessage('你选择了---否')
+    }
+
+    const isOpenRef = ref(false);
+    const setOpen = (state: boolean) => isOpenRef.value = state;
+    const buttons = ['Ok'];
+
+    return {
+      ShowMessage,
+      BtnData,
+      handleClickButton,
+      buttons, 
+      isOpenRef, 
+      setOpen
+    }
   }
 });
 </script>

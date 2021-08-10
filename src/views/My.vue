@@ -5,13 +5,16 @@
         <ion-title class="toolbar-title">MY</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content>我的页</ion-content>
+    <ion-content>
+      <TheToast />
+    </ion-content>
     <TabBar />
   </ion-page>
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
 import TabBar from './../components/TabBar.vue'
+import TheToast from './../components/TheToast.vue'
 import { 
   IonPage,
   IonHeader, 
@@ -32,7 +35,8 @@ export default defineComponent({
     IonToolbar,
     IonTitle,
     IonContent,
-    TabBar
+    TabBar,
+    TheToast
     // IonButton,
     // IonList,
     // IonItem,
