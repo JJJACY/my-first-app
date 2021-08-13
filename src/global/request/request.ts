@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Plugins } from '@capacitor/core';
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 const { Toast }  =  Plugins
 const axiosInstance = axios.create();
 
@@ -11,10 +11,10 @@ axiosInstance.defaults.timeout = 20000;
 axiosInstance.interceptors.request.use(
   config => {
     const newConfig = { ...config };
-    const TOKEN = Cookie.get("commen_token");
-    if (TOKEN) {
-      newConfig.headers.Authorization = `${TOKEN}`;
-    }
+    // const TOKEN = Cookie.get("commen_token");
+    // if (TOKEN) {
+    //   newConfig.headers.Authorization = `${TOKEN}`;
+    // }
     return newConfig;
   },
   error => Promise.reject(error)
@@ -28,16 +28,16 @@ const handleErrorRequest = (error: any) => {
     const { errors } = data;
     const message = data.message || "请求发送失败~";
     if (status === 401) {
-      Cookie.remove("commen_token", {
-        domain: process.env.VUE_APP_DOMAIN
-      });
+      // Cookie.remove("commen_token", {
+      //   domain: process.env.VUE_APP_DOMAIN
+      // });
       Toast.show(message);
     } else if (status === 403) {
       Toast.show({text:"禁止访问"});
     } else if (status === 419) {
-      Cookie.remove("zhifou_token", {
-        domain: process.env.VUE_APP_DOMAIN
-      });
+      // Cookie.remove("zhifou_token", {
+      //   domain: process.env.VUE_APP_DOMAIN
+      // });
     } else if (status === 422 || status === 423 || status === 429) {
       Toast.show(errors);
     } else {
@@ -56,7 +56,7 @@ axiosInstance.interceptors.response.use(
           Toast.show(res.data.message);
           return Promise.reject(res.data);
         }
-        return res.data.data;
+        return res.data.data ? res.data.data : res.data; //检查是否有嵌套的情况
       case !!res.status:
         Toast.show(res.data.message);
         return Promise.reject(res.data);

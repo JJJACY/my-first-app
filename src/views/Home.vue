@@ -38,6 +38,8 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonButton, IonAle
 import { defineComponent, reactive, ref } from 'vue';
 import Toast from './../components/toast.vue'
 import TabBar from './../components/TabBar.vue'
+// import { getKey,setKey,deleteKey} from './../global/storage/storage'
+import SomeService from '@/global/service/news'
 
 export default defineComponent({
   name: 'Home',
@@ -53,6 +55,10 @@ export default defineComponent({
     TabBar,
   },
   setup() {
+    SomeService.all().then(res=>{
+      console.log(res,111)
+    })
+
     const ShowMessage = async (msg: string) => {
       const alert = await alertController
         .create({
