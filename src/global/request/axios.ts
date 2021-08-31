@@ -1,7 +1,7 @@
 import axios from "axios";
-import { Plugins } from '@capacitor/core';
 // import Cookie from "js-cookie";
-const { Toast }  =  Plugins
+import {Toast} from '@/utils/toast'
+
 const axiosInstance = axios.create();
 
 axiosInstance.defaults.withCredentials = true;
@@ -31,20 +31,20 @@ const handleErrorRequest = (error: any) => {
       // Cookie.remove("commen_token", {
       //   domain: process.env.VUE_APP_DOMAIN
       // });
-      Toast.show(message);
+      Toast(message);
     } else if (status === 403) {
-      Toast.show({text:"禁止访问"});
+      Toast("禁止访问");
     } else if (status === 419) {
       // Cookie.remove("zhifou_token", {
       //   domain: process.env.VUE_APP_DOMAIN
       // });
     } else if (status === 422 || status === 423 || status === 429) {
-      Toast.show(errors);
+      Toast(errors);
     } else {
-      Toast.show(message);
+      Toast(message);
     }
   } else {
-    Toast.show({text:"网络错误"});
+    Toast("网络错误");
   }
 };
 
@@ -53,12 +53,12 @@ axiosInstance.interceptors.response.use(
     switch (true) {
       case res.status === 200:
         if (res.data.success === false) {
-          Toast.show(res.data.message);
+          Toast(res.data.message);
           return Promise.reject(res.data);
         }
         return res.data.data ? res.data.data : res.data; //检查是否有嵌套的情况
       case !!res.status:
-        Toast.show(res.data.message);
+        Toast(res.data.message);
         return Promise.reject(res.data);
       default:
         return res.data;
