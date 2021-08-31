@@ -1,5 +1,5 @@
 <template>
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="top">
     <ion-tab-button tab="home" href="/home">
       <ion-icon :icon="logoVue"></ion-icon>
       <ion-label>首頁</ion-label>

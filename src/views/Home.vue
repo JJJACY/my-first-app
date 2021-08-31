@@ -5,9 +5,15 @@
         <ion-title class="toolbar-title">Home</ion-title>
       </ion-toolbar>
     </ion-header>
+    <TabBar />
     <ion-content :fullscreen="true">    
       <div id="container">
         <p><strong>Ready to create an app?</strong></p>
+        <ul>
+          <li v-for="item in cityData.list" :key="item.areaCode">
+            {{item.areaName}}
+          </li>
+        </ul>
         <ion-button 
           v-for="item in BtnData.btnInfo" 
           :key="item.id" 
@@ -29,7 +35,7 @@
         <Toast />
       </div>
     </ion-content>
-    <TabBar />
+    <!-- <TabBar /> -->
   </ion-page>
 </template>
 
@@ -55,8 +61,12 @@ export default defineComponent({
     TabBar,
   },
   setup() {
-    SomeService.all().then(res=>{
+    const cityData = reactive({
+       list: []
+    })
+    SomeService.all().then((res: any)=>{
       console.log(res,111)
+      cityData.list = res.list
     })
 
     const ShowMessage = async (msg: string) => {
@@ -94,6 +104,7 @@ export default defineComponent({
     const buttons = ['Ok'];
 
     return {
+      cityData,
       ShowMessage,
       BtnData,
       handleClickButton,

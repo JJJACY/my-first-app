@@ -1,5 +1,5 @@
-const PREFIX = `https://sb.com`
+const PREFIX = `http://localhost:3000/api`
 
 export default {
-  news: `${PREFIX}/qwer`
+  user: `${PREFIX}/user`,
 }

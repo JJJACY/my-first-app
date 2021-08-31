@@ -52,4 +52,5 @@ export default defineComponent({
 .toolbar-title {
   color: #ffffff;
 }
+
 </style>

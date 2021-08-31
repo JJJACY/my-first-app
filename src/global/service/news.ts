@@ -1,9 +1,9 @@
-import request from "@/global/request/request";
+import request from "@/global/request/axios";
 import API from "@/global/request/api";
 
 const SomeService = {
-   all() {
-    return request.get(API.news)
+  all() {
+    return request.get(API.user)
   }
 }
 

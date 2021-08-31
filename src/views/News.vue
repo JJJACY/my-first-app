@@ -6,8 +6,12 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="page-content">
-      <TheInput :myInput="Data.inputValue" @change-input="changeInput"/>
-      <ion-label success="warning">{{Data.inputValue}}</ion-label>
+      <!-- <TheInput :myInput="Data.inputValue" @change-input="changeInput"/> -->
+      <TheInput v-model:getjb="Data.inputValue"/>
+      <ion-label color="danger">{{Data.inputValue}}</ion-label>
+      <transition-group tag="ul">
+        <li v-for="item in 3" :key="item">{{item}}</li>
+      </transition-group>
     </ion-content>
     <TabBar />
   </ion-page>
@@ -72,4 +76,6 @@ export default defineComponent({
   --padding-bottom: 20px;
   --padding-top: 20px;
 }
+
+
 </style>

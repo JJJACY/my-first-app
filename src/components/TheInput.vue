@@ -7,26 +7,42 @@
     @ionChange="handleChangeInput"></ion-input>
 </template>
 <script lang="ts">
-import { defineComponent, reactive } from 'vue';
+import { defineComponent, reactive, ref, computed} from 'vue';
 import { IonInput } from '@ionic/vue';
 export default defineComponent({
   name: 'TheInput',
   components: {
     IonInput
   },
-  props: {
-    myInput: {
-      type: String,
-      default: ''
-    }
-  },
-  setup(ctx,{emit}) {
+  // props: {
+  //   myInput: {
+  //     type: String,
+  //     default: ''
+  //   }
+  // },
+  setup(props,{emit}) {
+    console.log(props);
     const Data = reactive({
       value: ''
     })
     const handleChangeInput = () => {
-      emit('change-input',Data.value)
+      // emit('change-input',Data.value)
+      console.log('子组件触发事件')
+      emit('update:getjb',Data.value)
     }
+    
+
+    const count = ref(1)
+    const plusOne = computed({
+      get: () => count.value + 1,
+      set: val => {
+        count.value = val - 1
+      }
+    })
+
+    plusOne.value = 1
+    console.log(count.value) // 0
+    
     return {
       Data,
       handleChangeInput

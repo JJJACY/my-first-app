@@ -1,9 +1,11 @@
 <template>
-  <ion-button @click="setOpen(true)" color="warning">Show Toast</ion-button>
+  <ion-button class="confirm-btn" @click="setOpen(true)">Show Toast</ion-button>
   <ion-toast
+    class="my-toast"
     :is-open="isOpenRef"
     message="Your settings have been saved."
-    :duration="2000"
+    :duration="90000"
+    position="middle"
     @didDismiss="setOpen(false)"
   >
   </ion-toast>
@@ -23,3 +25,16 @@ export default defineComponent({
   }
 });
 </script>
+
+
+<style scoped>
+.confirm-btn {
+  --background: #ccc;
+  --color: red;
+  --background-activated: #000000; 
+  --background-activated-opacity: 0.1;
+}
+/* .toast-wrapper{
+  --background: #ccc !important;
+} */
+</style>

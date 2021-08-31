@@ -237,8 +237,8 @@ http://ionicframework.com/docs/theming/ */
 } */
 
 ion-content {
-  --padding-start: 20px;
-  --padding-end: 20px;
-  --padding-bottom: 20px;
-  --padding-top: 20px;
+  --padding-start:10px;
+  --padding-end:10px;
+  --padding-bottom:10px;
+  --padding-top:10px;
 }

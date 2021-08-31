@@ -6,3 +6,7 @@
 .alert-button {
   color: #333333 !important;
 }
+
+.toast-wrapper{
+  --background: #ccc !important;
+}
