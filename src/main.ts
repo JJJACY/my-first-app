@@ -23,10 +23,16 @@ import '@ionic/vue/css/display.css';
 /* Theme variables */
 import './theme/variables.css';  
 import './theme/alert.css'; //引入修改弹窗样式
+import './theme/picker.css'
+
+
+import Vant from 'vant';
+import 'vant/lib/index.css';
 
 const app = createApp(App)
   .use(IonicVue)
-  .use(router);
+  .use(router)
+  .use(Vant);
 
 router.isReady().then(() => {
   app.mount('#app');

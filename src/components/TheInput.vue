@@ -21,7 +21,6 @@ export default defineComponent({
   //   }
   // },
   setup(props,{emit}) {
-    console.log(props);
     const Data = reactive({
       value: ''
     })
@@ -41,7 +40,6 @@ export default defineComponent({
     })
 
     plusOne.value = 1
-    console.log(count.value) // 0
     
     return {
       Data,

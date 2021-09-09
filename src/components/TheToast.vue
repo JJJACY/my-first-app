@@ -3,7 +3,7 @@
   <ion-toast
     class="my-toast"
     :is-open="isOpenRef"
-    message="Your settings have been saved."
+    :message="showMessage"
     :duration="90000"
     position="middle"
     @didDismiss="setOpen(false)"
@@ -17,6 +17,12 @@ import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
   components: { IonToast, IonButton },
+  props: {
+    showMessage: {
+      type: String,
+      default: ''
+    }
+  },
   setup() {
     const isOpenRef = ref(false);
     const setOpen = (state: boolean) => isOpenRef.value = state;

@@ -33,8 +33,8 @@
           @didDismiss="setOpen(false)"
         >
         </ion-alert>
-        <Toast />
       </div>
+      <nav-bar></nav-bar>
     </ion-content>
     <TabBar />
   </ion-page>
@@ -53,10 +53,13 @@ import {
   alertController,
 } from "@ionic/vue";
 import { defineComponent, reactive, ref } from "vue";
-import Toast from "./../components/toast.vue";
+// import Toast from "./../components/toast.vue";
 import TabBar from "./../components/TabBar.vue";
+import navBar from '@/components/navBar.vue'
 // import { getKey,setKey,deleteKey} from './../global/storage/storage'
-import SomeService from "@/global/service/news";
+// import SomeService from "@/global/service/news";
+// import { alert } from '@/utils/alert'
+// import { Toast } from '@/utils/toast'
 
 
 export default defineComponent({
@@ -69,23 +72,20 @@ export default defineComponent({
     IonToolbar,
     IonButton,
     IonAlert,
-    Toast,
     TabBar,
+    navBar
   },
   setup() {
     const cityData = reactive({
       list: [],
     });
-    const id = 3
-    SomeService.all(id).then((res: any) => {
-      cityData.list = res;
-    });
+    // SomeService.all(id).then((res: any) => {
+    //   cityData.list = res;
+    // });
 
     onIonViewWillEnter(()=>{
-      console.log('进入页面开始获取数据！！！')
-      // SomeService.all().then((res: any) => {
-      //   cityData.list = res.list;
-      // });
+      // alert('进入页面开始获取数据')
+      console.log(123)
     })
 
     const ShowMessage = async (msg: string) => {

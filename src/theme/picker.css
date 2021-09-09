@@ -1,0 +1,57 @@
+/* picker全局样式 */
+.picker-wrapper {
+  border-top: none !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+/* picker toolbar */
+.picker-toolbar {
+  justify-content: space-between !important;
+  border-bottom: 1px solid #f2f1f1 !important;
+}
+
+.picker-toolbar .picker-toolbar-cancel button{
+  color: #969799 !important;
+}
+
+.picker-toolbar-button {
+  flex: none !important;
+}
+
+.picker-toolbar .picker-title {
+  color: #231815 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  font-size: 15px;
+}
+
+.picker-toolbar .picker-toolbar-confirm button{
+  color: #576b95 !important;
+}
+
+.picker-opt {
+  font-size: 14px;
+  color: rgba(69, 90, 100, .6)
+}
+
+.picker-opt-selected {
+  font-size: 20px;
+  color: #000000 !important;
+}
+
+.picker-above-highlight {
+  opacity: 0.1;
+  border-bottom: 1px solid #f3f3f3 !important;
+}
+
+.picker-below-highlight {
+  opacity: 0.1;
+  border-top: 1px solid #f3f3f3 !important;
+}
+
+/* label顯示文字 */
+.label-fixed {
+  flex: none !important;
+  width: 200px !important;
+}
